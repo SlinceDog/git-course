@@ -15,5 +15,35 @@ Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分�
 和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。
 
 在实际使用分布式版本控制系统的时候，其实很少在两人之间的电脑上推送版本库的修改，因为可能你们俩不在一个局域网内，两台电脑互相访问不了，也可能今天你的同事病了，他的电脑压根没有开机。因此，分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。
-![forumImage20160511110244548](http://ww3.sinaimg.cn/large/006tNc79gy1fh6w43son4j30bf0890sp.jpg
-                               )
+![forumImage20160511110244548](http://ww3.sinaimg.cn/large/006tNc79gy1fh6w43son4j30bf0890sp.jpg)
+
+###Git常用命令
+-  版本回滚
+![forumImage20160511110244548](http://ww4.sinaimg.cn/large/006tNc79gy1fh6x9cd55vj31kw0ytao8.jpg)
+如上图：
+例如我想回滚到上一个版本 可以使用 git reset 命令
+```
+➜  wytGitHub git:(feature/feature-A) git reset --hard HEAD^
+HEAD is now at 2b5f6e4 修改md文档
+```
+指定回退到某一版本：
+##### - -oneline 标记把每一个提交压缩到了一行中。它默认只显示提交ID和提交信息的第一行。git log --oneline的输出一般是这样的：
+```
+2b5f6e4 修改md文档
+79744bd change file
+9345438 change md
+1d085b2 change MD
+69bf290 change read.me
+f97c4cd commit
+2da5726 change file
+023c107 add podSpec
+37f8a9f add file
+8a321b6 Initial commit
+```
+假设要回退到 “2da5726”这个版本，可以使用命令：
+```
+➜  wytGitHub git:(feature/feature-A) git reset --hard 2da5726
+HEAD is now at 2da5726 change file
+```
+指针已经指向 2da5726 提交，已经回滚到这个版本
+####如果需要做修改，提交之后需要处女执行 git push -f 强制覆盖
