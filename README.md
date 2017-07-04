@@ -50,3 +50,28 @@ HEAD is now at 2da5726 change file
 - HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id
 - 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
 ####如果需要做修改，提交之后需要处女执行 git push -f 强制覆盖
+
+- 撤销修改
+在日常开发中免不了撤销修改一些东西，例如产品修改某些feature...
+例如：可以使用git diff 来查看修改了哪些地方
+```
+diff --git a/README.md b/README.md
+index 47365ca..edd7938 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-> ## 这。。。。。
++> ## this is a md
+```
+在这个时候你可以有两种解决方法：
+1.你可以删掉最后一行，手动把文件恢复到上一个版本的状态。
+2.使用 git checkout -- file 可以丢弃工作区的修改。
+```
+➜  wytGitHub git:(feature/feature-A) ✗ git checkout -- README.md
+➜  wytGitHub git:(feature/feature-A) git status
+On branch feature/feature-A
+Your branch is up-to-date with 'origin/feature/feature-A'.
+nothing to commit, working directory clean
+```
+
+
