@@ -280,6 +280,7 @@ a5b4e93 commit understand how stage work
 2b5f6e4 修改md文档
 ```
 ![forumImage20160511110244548](https://ws3.sinaimg.cn/large/006tNc79gy1fh940zol3tj30c504kdfn.jpg)
+
 rebase最大的好处是你的项目历史会非常整洁。首先，它不像git merge 那样引入不必要的合并提交。其次，如上图所示，rebase导致最后的项目历史呈现出完美的线性——你可以从项目终点到起点浏览而不需要任何的Fork。这让你更容易使用git log 、git bisect 和gitk 来查看项目历史
 
 #####需要注意：rebase的时候，修改冲突后的提交不是使用commit命令，而是执行rebase命令指定 --continue选项。若要取消rebase，指定 --abort选项，完成后进行 git push -f 操作
